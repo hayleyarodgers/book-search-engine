@@ -20,6 +20,8 @@ import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from "@apollo/client";
 // Import the GraphQL mutation for saving new books
 import { SAVE_BOOK } from "../utils/mutations";
+// Import the GraphQL query for getting current user
+import { GET_ME } from "../utils/queries";
 
 const SearchBooks = () => {
 	// Create state for holding returned google API data
@@ -29,7 +31,9 @@ const SearchBooks = () => {
 	// Create state to hold saved bookId values
 	const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 	// Invoke `useMutation()` hook to return a Promise-based function and data about the SAVE_BOOK mutation
-	const [saveBook] = useMutation(SAVE_BOOK);
+	const [saveBook] = useMutation(SAVE_BOOK, {
+		refetchQueries: [{ query: GET_ME }], // Refetch current user to instantaneously update books on "See Your Books"
+	});
 
 	// Set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
 	useEffect(() => {
