@@ -16,7 +16,7 @@ const LoginForm = () => {
 	// Set state for alert
 	const [showAlert, setShowAlert] = useState(false);
 	// Invoke `useMutation()` hook to return a Promise-based function and data about the LOGIN_USER mutation
-	const [loginUser] = useMutation(LOGIN_USER);
+	const [loggedInUser] = useMutation(LOGIN_USER);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -36,7 +36,7 @@ const LoginForm = () => {
 		// Since mutation function is async, wrap in a `try...catch` to catch any network errors from throwing due to a failed request
 		try {
 			// Execute mutation and pass in defined parameter data as variables
-			const { data } = await loginUser({
+			const { data } = await loggedInUser({
 				variables: { userFormData },
 			});
 
