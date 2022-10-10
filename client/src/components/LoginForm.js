@@ -37,10 +37,11 @@ const LoginForm = () => {
 		try {
 			// Execute mutation and pass in defined parameter data as variables
 			const { data } = await loggedInUser({
-				variables: { userFormData },
+				variables: { ...userFormData },
 			});
 
-			Auth.login(data.loginUser.token);
+			console.log("User added.");
+			Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
 			setShowAlert(true);
