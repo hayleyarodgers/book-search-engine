@@ -6,7 +6,7 @@ import Auth from "../utils/auth";
 // Import the `useMutation()` hook from Apollo Client
 import { useMutation } from "@apollo/client";
 // Import the GraphQL mutation
-import { ADD_USER } from "../../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
 
 const SignupForm = () => {
 	// Set initial form state
