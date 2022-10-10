@@ -5,7 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
 	Query: {
 		// Get current user and their saved books by their id
-		me: async (_, _, context) => {
+		me: async (parent, args, context) => {
 			if (context.user) {
 				return User.findOne({ _id: context.user._id }).populate("savedBooks");
 			}
@@ -15,13 +15,13 @@ const resolvers = {
 
 	Mutation: {
 		// Create a new user, sign a token and send it back (to client/src/components/SignUpForm.js)
-		addUser: async (_, { username, email, password }, _) => {
+		addUser: async (parent, { username, email, password }, context) => {
 			const user = await User.create({ username, email, password });
 			const token = signToken(user);
 			return { token, user };
 		},
 		// Log in an existing user, sign a token and send it back (to client/src/components/LoginForm.js)
-		login: async (_, { email, password }, _) => {
+		login: async (parent, { email, password }, context) => {
 			const user = await User.findOne({ email });
 
 			if (!user) {
@@ -39,7 +39,7 @@ const resolvers = {
 			return { token, user };
 		},
 		// Save a book to a user's `savedBooks` by adding it to the set (to prevent duplicates)
-		saveBook: async (_, { book }, context) => {
+		saveBook: async (parent, { book }, context) => {
 			if (context.user) {
 				const updatedUser = await User.findOneAndUpdate(
 					{ _id: context.user._id },
@@ -52,7 +52,7 @@ const resolvers = {
 			throw new AuthenticationError("You need to be logged in.");
 		},
 		// Remove a book from `savedBooks`
-		removeBook: async (_, { book }, context) => {
+		removeBook: async (parent, { book }, context) => {
 			if (context.user) {
 				const updatedUser = await User.findOneAndUpdate(
 					{ _id: context.user._id },
