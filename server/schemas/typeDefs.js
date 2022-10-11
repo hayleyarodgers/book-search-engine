@@ -3,19 +3,19 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
 	# Define which fields are accessible from the User model
 	type User {
-		_id: ID
-		username: String
-		email: String
+		_id: ID!
+		username: String!
+		email: String!
 		bookCount: Int
 		savedBooks: [Book]
 	}
 
 	# Define which fields are accessible from the Book model
 	type Book {
-		bookId: String
+		bookId: String!
 		authors: [String]
-		description: String
-		title: String
+		description: String!
+		title: String!
 		image: String
 		link: String
 	}
