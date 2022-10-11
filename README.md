@@ -42,7 +42,7 @@ The repository where the code is saved is on Github. To access it, click [here](
 
 ### Live Application
 
-My application is deployed on Heroku. To access it, click [here](https://hayleyarodgers-book-search-engine.herokuapp.com/).
+My application is deployed on Heroku. To access it, click [here](https://hayleyarodgers-book-search.herokuapp.com/).
 
 ## Installation
 
@@ -59,7 +59,7 @@ To use the application from the command line (after installing dependencies):
 2. Bundle the front-end code by entering ```npm run build``` in the command line.
 3. Start the server by entering ```npm run start``` in the command line and go to the port on your local host OR use the complete application by entering ```npm run develop``` in the command line and go to the port on your local host.
 
-Alternatively, to use the live application, click [here](https://hayleyarodgers-book-search-engine.herokuapp.com/).
+Alternatively, to use the live application, click [here](https://hayleyarodgers-book-search.herokuapp.com/).
 
 ## Credits
 
