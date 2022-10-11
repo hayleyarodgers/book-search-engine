@@ -41,6 +41,7 @@ const SavedBooks = () => {
 			});
 
 			// Upon success, remove book's id from localStorage and refetch updated savedBooks list
+			console.log("Book removed.");
 			refetch();
 			removeBookId(bookId);
 		} catch (err) {

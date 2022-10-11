@@ -40,7 +40,7 @@ const LoginForm = () => {
 				variables: { ...userFormData },
 			});
 
-			console.log("User added.");
+			console.log("User logged in.");
 			Auth.login(data.login.token);
 		} catch (err) {
 			console.error(err);
