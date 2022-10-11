@@ -21,7 +21,7 @@ import { REMOVE_BOOK } from "../utils/mutations";
 
 const SavedBooks = () => {
 	// Get current user's saved books
-	const { loading, data } = useQuery(GET_ME);
+	const { loading, data, refetch } = useQuery(GET_ME);
 	const myBooks = data?.me?.savedBooks || []; // Return empty array if no user or books
 
 	// Invoke `useMutation()` hook to return a Promise-based function and data about the REMOVE_BOOK mutation
@@ -40,6 +40,8 @@ const SavedBooks = () => {
 				variables: { bookId },
 			});
 
+			refetch();
+			console.log(myBooks);
 			// Upon success, remove book's id from localStorage
 			removeBookId(bookId);
 		} catch (err) {
